@@ -23,27 +23,13 @@ Developed by: S Rithika
 RegisterNumber:  212225040344
 
 import pandas as pd
-
-# Load dataset
 data = pd.read_csv("Placement_Data (1).csv")
-
-# Display dataset
 print(data.head())
-
-# Dataset information
 print(data.info())
-
-# Check missing values
 print(data.isnull().sum())
-
-# Check target values
 print(data["status"].value_counts())
-
-# Encode categorical columns
 from sklearn.preprocessing import LabelEncoder
-
 le = LabelEncoder()
-
 categorical_cols = [
     "gender",
     "ssc_b",
@@ -57,13 +43,9 @@ categorical_cols = [
 
 for col in categorical_cols:
     data[col] = le.fit_transform(data[col])
-
-# Fill missing salary values
 data["salary"] = data["salary"].fillna(data["salary"].mean())
 
 print(data.head())
-
-# Define features and target
 x = data[[
     "ssc_p",
     "hsc_p",
@@ -74,8 +56,6 @@ x = data[[
 ]]
 
 y = data["status"]
-
-# Split dataset
 from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test = train_test_split(
@@ -84,27 +64,13 @@ x_train, x_test, y_train, y_test = train_test_split(
     test_size=0.2,
     random_state=100
 )
-
-# Import Decision Tree
 from sklearn.tree import DecisionTreeClassifier
-
-# Create model
 dt = DecisionTreeClassifier(criterion="entropy")
-
-# Train model
 dt.fit(x_train, y_train)
-
-# Predict test data
 y_pred = dt.predict(x_test)
-
-# Calculate accuracy
 from sklearn import metrics
-
 accuracy = metrics.accuracy_score(y_test, y_pred)
-
 print("Accuracy:", accuracy)
-
-# Sample prediction
 sample_data = pd.DataFrame(
     [[70, 75, 80, 85, 78, 300000]],
     columns=[
