@@ -95,6 +95,7 @@ else:
 ```
 
 ## Output:
+
 <img width="919" height="735" alt="image" src="https://github.com/user-attachments/assets/9c96b9a8-9721-4292-a911-8b1d8d1ed816" />
 <img width="848" height="754" alt="image" src="https://github.com/user-attachments/assets/80597ab3-b083-47f4-8fd4-ce05c7ec3e57" />
 
