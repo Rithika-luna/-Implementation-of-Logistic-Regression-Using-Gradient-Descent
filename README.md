@@ -21,83 +21,85 @@ To write a program to implement the the Logistic Regression Using Gradient Desce
 Program to implement the the Logistic Regression Using Gradient Descent.
 Developed by: S Rithika
 RegisterNumber:  212225040344
-
 import pandas as pd
-data = pd.read_csv("Placement_Data (1).csv")
-print(data.head())
-print(data.info())
-print(data.isnull().sum())
-print(data["status"].value_counts())
+import numpy as np
 from sklearn.preprocessing import LabelEncoder
+
+data = pd.read_csv("Placement_Data (1).csv")
+
+data1 = data.copy()
+
+data1 = data1.drop(['sl_no', 'salary'], axis=1)
+
 le = LabelEncoder()
-categorical_cols = [
-    "gender",
-    "ssc_b",
-    "hsc_b",
-    "hsc_s",
-    "degree_t",
-    "workex",
-    "specialisation",
-    "status"
-]
 
-for col in categorical_cols:
-    data[col] = le.fit_transform(data[col])
-data["salary"] = data["salary"].fillna(data["salary"].mean())
+data1["gender"] = le.fit_transform(data1["gender"])
+data1["ssc_b"] = le.fit_transform(data1["ssc_b"])
+data1["hsc_b"] = le.fit_transform(data1["hsc_b"])
+data1["hsc_s"] = le.fit_transform(data1["hsc_s"])
+data1["degree_t"] = le.fit_transform(data1["degree_t"])
+data1["workex"] = le.fit_transform(data1["workex"])
+data1["specialisation"] = le.fit_transform(data1["specialisation"])
+data1["status"] = le.fit_transform(data1["status"])
 
-print(data.head())
-x = data[[
-    "ssc_p",
-    "hsc_p",
-    "degree_p",
-    "etest_p",
-    "mba_p",
-    "salary"
-]]
+x = data1.iloc[:, :-1].values
+y = data1["status"].values
 
-y = data["status"]
-from sklearn.model_selection import train_test_split
+theta = np.random.randn(x.shape[1])
 
-x_train, x_test, y_train, y_test = train_test_split(
-    x,
-    y,
-    test_size=0.2,
-    random_state=100
-)
-from sklearn.tree import DecisionTreeClassifier
-dt = DecisionTreeClassifier(criterion="entropy")
-dt.fit(x_train, y_train)
-y_pred = dt.predict(x_test)
-from sklearn import metrics
-accuracy = metrics.accuracy_score(y_test, y_pred)
+def sigmoid(z):
+    return 1 / (1 + np.exp(-z))
+
+def loss(theta, x, y):
+    h = sigmoid(x.dot(theta))
+    return -np.sum(y * np.log(h) + (1 - y) * np.log(1 - h))
+
+def gradient_descent(theta, x, y, alpha, num_iterations):
+
+    m = len(y)
+
+    for i in range(num_iterations):
+
+        h = sigmoid(x.dot(theta))
+
+        gradient = x.T.dot(h - y) / m
+
+        theta = theta - alpha * gradient
+
+    return theta
+
+theta = gradient_descent(theta, x, y, alpha=0.01, num_iterations=1000)
+
+def predict(theta, x):
+
+    h = sigmoid(x.dot(theta))
+
+    y_pred = np.where(h >= 0.5, 1, 0)
+
+    return y_pred
+
+y_pred = predict(theta, x)
+
+accuracy = np.mean(y_pred.flatten() == y)
+
 print("Accuracy:", accuracy)
-sample_data = pd.DataFrame(
-    [[70, 75, 80, 85, 78, 300000]],
-    columns=[
-        "ssc_p",
-        "hsc_p",
-        "degree_p",
-        "etest_p",
-        "mba_p",
-        "salary"
-    ]
-)
 
-prediction = dt.predict(sample_data)
+print("Predicted:\n", y_pred)
 
-print("Prediction:", prediction)
+print("Actual:\n", y)
 
-if prediction[0] == 1:
-    print("Placed")
-else:
-    print("Not Placed")
+xnew = np.array([[0,87,0,95,0,2,78,2,0,0,1,0]])
+
+y_prednew = predict(theta, xnew)
+
+print("Predicted Result:", y_prednew)
+
 */
 ```
 
 ## Output:
 
-<img width="919" height="735" alt="image" src="https://github.com/user-attachments/assets/9c96b9a8-9721-4292-a911-8b1d8d1ed816" />
-<img width="848" height="754" alt="image" src="https://github.com/user-attachments/assets/80597ab3-b083-47f4-8fd4-ce05c7ec3e57" />
+<img width="938" height="398" alt="image" src="https://github.com/user-attachments/assets/b8a5b19d-7100-4c9d-a85b-06c94cfb970c" />
 
 ## Result:
 Thus the program to implement the the Logistic Regression Using Gradient Descent is written and verified using python programming.
