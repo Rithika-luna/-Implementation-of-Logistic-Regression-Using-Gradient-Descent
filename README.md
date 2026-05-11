@@ -23,6 +23,11 @@ To write a program to implement the the Logistic Regression Using Gradient Desce
 Program to implement the the Logistic Regression Using Gradient Descent.
 Developed by: S Rithika
 RegisterNumber:  212225040344
+
+```
+
+
+
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
@@ -99,7 +104,7 @@ print("Predicted Result:", y_prednew)
 
 */
 
-
+```
 ```
 
 ## Output:
