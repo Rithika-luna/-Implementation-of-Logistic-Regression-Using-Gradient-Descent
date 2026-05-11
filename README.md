@@ -107,13 +107,14 @@ print("Predicted Result:", y_prednew)
 ```
 ```
 
+
 ## Output:
 
-
+```
 
 ![Output](images/output.png)<img width="938" height="398" alt="exp6" src="https://github.com/user-attachments/assets/652d301e-01d0-47cb-8806-8cacb5600ebc" />
 
-
+```
 
 ## Result:
 Thus the program to implement the the Logistic Regression Using Gradient Descent is written and verified using python programming.
