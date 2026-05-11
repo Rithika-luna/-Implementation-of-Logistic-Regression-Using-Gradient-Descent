@@ -8,7 +8,9 @@ To write a program to implement the the Logistic Regression Using Gradient Desce
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
 ## Algorithm
+
 ```
+
 1.Import the required libraries and load the dataset for logistic regression.
 2.Split the dataset into training and testing data, then normalize the input features.
 3.Initialize the weights and bias values for the logistic regression model.
@@ -94,12 +96,17 @@ y_prednew = predict(theta, xnew)
 
 print("Predicted Result:", y_prednew)
 
+
 */
+
+
 ```
 
 ## Output:
 
-<img width="938" height="398" alt="image" src="https://github.com/user-attachments/assets/b8a5b19d-7100-4c9d-a85b-06c94cfb970c" />
+
+<img width="938" height="398" alt="Screenshot 2026-05-11 181400" src="https://github.com/user-attachments/assets/906fc6e5-4d11-4a48-aeea-48d277598c73" />
+
 
 ## Result:
 Thus the program to implement the the Logistic Regression Using Gradient Descent is written and verified using python programming.
