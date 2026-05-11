@@ -109,8 +109,9 @@ print("Predicted Result:", y_prednew)
 
 ## Output:
 
-<img width="938" height="398" alt="exp6" src="https://github.com/user-attachments/assets/e02c97c2-42cf-42c9-9f6d-61647db36ce3" />
 
+
+![Output](images/output.png)<img width="938" height="398" alt="exp6" src="https://github.com/user-attachments/assets/652d301e-01d0-47cb-8806-8cacb5600ebc" />
 
 
 
